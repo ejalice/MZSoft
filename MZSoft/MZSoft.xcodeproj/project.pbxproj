@@ -104,6 +104,7 @@
 				0AE27F0128F0790400D79208 /* Resources */,
 				0AE27F0028F078DD00D79208 /* Sources */,
 				0A96FB9928F045100082F4C9 /* LaunchScreen.storyboard */,
+				0A96FB9C28F045100082F4C9 /* Info.plist */,
 			);
 			path = MZSoft;
 			sourceTree = "<group>";
@@ -162,7 +163,6 @@
 		0AE27F0128F0790400D79208 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0A96FB9C28F045100082F4C9 /* Info.plist */,
 				0A96FB9728F045100082F4C9 /* Assets.xcassets */,
 				0A96FB8E28F0450E0082F4C9 /* AppDelegate.swift */,
 				0A96FB9028F0450E0082F4C9 /* SceneDelegate.swift */,
