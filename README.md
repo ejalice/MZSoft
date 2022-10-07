@@ -19,15 +19,15 @@
 
 ## :sparkles: Skills & Tech Stack
 - UIKit
-- 
+- SnapKit
 
 # Git
 
 ## Git Commit Message
 |*Type*|*Subject*|
-|:—|:—|
+|:---|:---|
 |**[Feat]**|새로운 기능 추가|
-|**[Add]**|새로운 뷰, 에셋, 파일, 데이터… 추가|
+|**[Add]**|새로운 뷰, 에셋, 파일, 데이터... 추가|
 |**[Fix]**|버그 수정|
 |**[Build]**|빌드 관련 파일 수정|
 |**[Design]**|UI Design 변경|
