@@ -101,13 +101,9 @@
 		0A96FB8D28F0450E0082F4C9 /* MZSoft */ = {
 			isa = PBXGroup;
 			children = (
-				0A96FB8E28F0450E0082F4C9 /* AppDelegate.swift */,
-				0A96FB9028F0450E0082F4C9 /* SceneDelegate.swift */,
-				0A96FB9228F0450E0082F4C9 /* ViewController.swift */,
-				0A96FB9428F0450E0082F4C9 /* Main.storyboard */,
-				0A96FB9728F045100082F4C9 /* Assets.xcassets */,
+				0AE27F0128F0790400D79208 /* Resources */,
+				0AE27F0028F078DD00D79208 /* Sources */,
 				0A96FB9928F045100082F4C9 /* LaunchScreen.storyboard */,
-				0A96FB9C28F045100082F4C9 /* Info.plist */,
 			);
 			path = MZSoft;
 			sourceTree = "<group>";
@@ -127,6 +123,58 @@
 				0A96FBB128F045100082F4C9 /* MZSoftUITestsLaunchTests.swift */,
 			);
 			path = MZSoftUITests;
+			sourceTree = "<group>";
+		};
+		0AE27EFD28F078C900D79208 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A96FB9228F0450E0082F4C9 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0AE27EFE28F078D200D79208 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0AE27EFF28F078D600D79208 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0AE27F0028F078DD00D79208 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0A96FB9428F0450E0082F4C9 /* Main.storyboard */,
+				0AE27F0228F0794C00D79208 /* Class */,
+				0AE27EFD28F078C900D79208 /* ViewController */,
+				0AE27EFE28F078D200D79208 /* Model */,
+				0AE27EFF28F078D600D79208 /* View */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0AE27F0128F0790400D79208 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A96FB9C28F045100082F4C9 /* Info.plist */,
+				0A96FB9728F045100082F4C9 /* Assets.xcassets */,
+				0A96FB8E28F0450E0082F4C9 /* AppDelegate.swift */,
+				0A96FB9028F0450E0082F4C9 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0AE27F0228F0794C00D79208 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
