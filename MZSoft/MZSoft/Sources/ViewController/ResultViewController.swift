@@ -9,24 +9,18 @@ import UIKit
 import SnapKit
 
 class ResultViewController: UIViewController {
-
-    private let titleLabel: UILabel = {
+    
+    var storyContent: [StoryContent] = [StoryContent(mainTitle: "응애(엔딩 타이틀)", subTitle: "응 -- 애", imageName: "aliceProfile", content: "썸녀를 엄마로\n만들어 버렸습니다.", buttonContent: "HOME")]
+    
+    private let mainTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "응애(엔딩타이틀)"
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textAlignment = .center
         return label
     }()
     
-    private let middleView: UIView = {
-        let view = UIView()
-        view.layer.borderWidth = 2
-        return view
-    }()
-    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "aliceProfile")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 8
@@ -34,9 +28,8 @@ class ResultViewController: UIViewController {
         return imageView
     }()
     
-    private let imageLabel: UILabel = {
+    private let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "응 -- 애"
         label.font = UIFont.systemFont(ofSize: 17)
         label.textAlignment = .center
         
@@ -45,7 +38,6 @@ class ResultViewController: UIViewController {
     
     private let contentLabel: UILabel = {
         let label = UILabel()
-        label.text = "썸녀를 엄마로\n만들어 버렸습니다."
         label.font = UIFont.systemFont(ofSize: 17)
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -55,8 +47,8 @@ class ResultViewController: UIViewController {
     
     private let button: UIButton = {
         let button = UIButton()
-        button.setTitle("HOME/NEXT", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+//        button.setTitle("", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .white
         button.layer.borderColor = UIColor.black.cgColor
@@ -72,41 +64,46 @@ class ResultViewController: UIViewController {
         view.backgroundColor = .white
         
         // View SetUp
-        [titleLabel,
-         middleView, imageView, imageLabel,
+        [mainTitleLabel,
+         imageView, subTitleLabel,
          contentLabel,
          button].forEach { self.view.addSubview($0) }
         
+        configure()
         setConstraints()
+    }
+    
+    private func configure() {
+        mainTitleLabel.text = storyContent[0].mainTitle
+        imageView.image = UIImage(named: storyContent[0].imageName)
+        subTitleLabel.text = storyContent[0].subTitle
+        contentLabel.text = storyContent[0].content
+        button.setTitle(storyContent[0].buttonContent, for: .normal)
     }
     
     // Constraints
     private func setConstraints() {
-        titleLabel.snp.makeConstraints { make in
+        mainTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
             make.top.equalToSuperview().inset(112)
         }
         
-        middleView.snp.makeConstraints { make in
+        imageView.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(titleLabel.snp.bottom).offset(27)
+            make.top.equalTo(mainTitleLabel.snp.bottom).offset(27)
             make.width.equalToSuperview().multipliedBy(0.72) // 282/390
-            make.height.equalTo(middleView.snp.width)
+            make.height.equalTo(imageView.snp.width)
             
         }
         
-        imageView.snp.makeConstraints { make in
-            make.edges.equalTo(middleView)
-        }
-        
-        imageLabel.snp.makeConstraints { make in
+        subTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.bottom.equalTo(middleView.snp.bottom).offset(-49)
+            make.bottom.equalTo(imageView.snp.bottom).offset(-49)
         }
         
         contentLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(middleView.snp.bottom).offset(44)
+            make.top.equalTo(imageView.snp.bottom).offset(44)
         }
         
         button.snp.makeConstraints { make in

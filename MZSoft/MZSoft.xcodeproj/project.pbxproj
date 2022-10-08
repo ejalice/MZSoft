@@ -20,6 +20,7 @@
 		0AE27F0628F15CB500D79208 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE27F0528F15CB500D79208 /* UIColor+.swift */; };
 		0AE27F0928F15DCD00D79208 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE27F0828F15DCD00D79208 /* UIScreen+.swift */; };
 		B61CE19128F1C36900F8CCAA /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CE19028F1C36900F8CCAA /* ResultViewController.swift */; };
+		B61CE19328F1C73A00F8CCAA /* StoryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CE19228F1C73A00F8CCAA /* StoryContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		0AE27F0528F15CB500D79208 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		0AE27F0828F15DCD00D79208 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		B61CE19028F1C36900F8CCAA /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		B61CE19228F1C73A00F8CCAA /* StoryContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoryContent.swift; path = MZSoft/Sources/ViewController/StoryContent.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 		0AE27EFE28F078D200D79208 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B61CE19228F1C73A00F8CCAA /* StoryContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				0AE27F0928F15DCD00D79208 /* UIScreen+.swift in Sources */,
 				0AE27F0628F15CB500D79208 /* UIColor+.swift in Sources */,
 				0A96FB8F28F0450E0082F4C9 /* AppDelegate.swift in Sources */,
+				B61CE19328F1C73A00F8CCAA /* StoryContent.swift in Sources */,
 				0A96FB9128F0450E0082F4C9 /* SceneDelegate.swift in Sources */,
 				B61CE19128F1C36900F8CCAA /* ResultViewController.swift in Sources */,
 			);
