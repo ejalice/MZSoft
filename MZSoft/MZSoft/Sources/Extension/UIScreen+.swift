@@ -52,10 +52,22 @@ extension UIScreen {
             default: return CGFloat(10)
             }
         }
-        
+        /// 10
         var verticalSpacing: CGFloat {
             switch self {
             default: return CGFloat(10)
+            }
+        }
+        /// 30
+        var verticalSpacing2: CGFloat {
+            switch self {
+            default: return CGFloat(30)
+            }
+        }
+        /// 50
+        var verticalSpacing3: CGFloat {
+            switch self {
+            default: return CGFloat(50)
             }
         }
         

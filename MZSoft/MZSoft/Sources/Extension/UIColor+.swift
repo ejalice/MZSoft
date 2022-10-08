@@ -11,25 +11,24 @@ extension UIColor {
     
     /// gray
     static var appTextColor1: UIColor {
-        let color = UIColor.gray
+        let color = UIColor(named: "appLightGray")!
+        return color
+    }
+    /// black
+    static var appTextColor2: UIColor {
+        let color = UIColor.black
         return color
     }
     
-    /// pink
+    /// yellow
     static var appTintColor1: UIColor {
-        let color = UIColor.systemBlue
-        return color
-    }
-    
-    /// blue
-    static var appTintColor2: UIColor {
-        let color = UIColor.systemPink
+        let color = UIColor(named: "appTintColor")!
         return color
     }
     
     /// blue
     static var appBorderColor1: UIColor {
-        let color = UIColor.systemBlue
+        let color = UIColor(named: "appTintColor")!
         return color
     }
     
@@ -39,9 +38,15 @@ extension UIColor {
         return color
     }
     
-    /// lightGray
+    /// gray
     static var appBackgroundColor2: UIColor {
-        let color = UIColor.lightGray
+        let color = UIColor(named: "appLightGray")!
+        return color
+    }
+    
+    /// charcoal
+    static var appBackgroundColor3: UIColor {
+        let color = UIColor(named: "buttonBackground")!
         return color
     }
 }
