@@ -16,3 +16,9 @@ enum MessageType {
     case male
     case female
 }
+
+struct Day {
+    let day: String
+    let date: String
+    let isToday: Bool
+}
