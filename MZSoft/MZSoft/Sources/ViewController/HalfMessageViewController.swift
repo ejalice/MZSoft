@@ -104,6 +104,17 @@ class HalfMessageViewController: UIViewController {
             self.configureUI()
             self.configureButtonUI()
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.showCell(row: 0)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.showCell(row: 1)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            self.showCell(row: 2)
+        }
+        
     }
     
     private func configureUI() {
@@ -138,8 +149,7 @@ class HalfMessageViewController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(device.horizontalPadding)
             make.height.equalTo(device.textBoxHeight)
         }
-        
-        
+
     }
     
     private func configureButtonUI() {
@@ -161,12 +171,11 @@ class HalfMessageViewController: UIViewController {
         }
         selectButton4.snp.makeConstraints { make in            make.top.equalTo(selectButton3.snp.bottom).offset(device.verticalSpacing)
             make.horizontalEdges.equalToSuperview().inset(device.horizontalPadding)
-//            make.bottom.equalToSuperview().offset(device.verticalPadding)
         }
     }
-    private func addCell(row: Int, content: Message) {
-        guard let cell = messageCollectionView.dequeueReusableCell(withReuseIdentifier: "MessageCollectionViewCell", for: IndexPath(row: row, section: 0)) as? MessageCollectionViewCell else { return }
-        messageCollectionView.insertItems(at: [IndexPath(row: row, section: 0)])
+    private func showCell(row: Int) {
+        let cell = messageCollectionView.cellForItem(at: IndexPath(row: row, section: 0))
+        cell?.alpha = 1
     }
     
 }
@@ -178,8 +187,10 @@ extension HalfMessageViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = messageCollectionView.dequeueReusableCell(withReuseIdentifier: "MessageCollectionViewCell", for: indexPath) as? MessageCollectionViewCell else { return UICollectionViewCell() }
-        cell.configureUI(message: messageData[indexPath.row])
-        
+        DispatchQueue.main.async {
+            cell.alpha = 0
+            cell.configureUI(message: self.messageData[indexPath.row])
+        }
         return cell
     }
     
