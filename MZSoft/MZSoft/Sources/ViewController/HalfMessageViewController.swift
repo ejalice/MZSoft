@@ -11,7 +11,7 @@ import UIKit
 class HalfMessageViewController: UIViewController {
     let device = UIScreen.getDevice()
     var messageData: [Message] = [Message(type: .male, content: "어제 용오름 야무지더라 ㅎㅎ"), Message(type: .female, content: "아.. 맞아 ㅎㅎ.."), Message(type: .female, content: "그래서인지 열이 조금 나네?")]
-
+    var selectedButtonNumber: Int? = nil
     private lazy var borderView: UIView = {
         let view = UIView()
         return view
@@ -145,6 +145,12 @@ class HalfMessageViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .appBackgroundColor1
         
+        self.sendButton.addTarget(self, action: #selector(onTapSendButton), for: .touchUpInside)
+        self.selectButton1.addTarget(self, action: #selector(onTapSelectButton1), for: .touchUpInside)
+        self.selectButton2.addTarget(self, action: #selector(onTapSelectButton2), for: .touchUpInside)
+        self.selectButton3.addTarget(self, action: #selector(onTapSelectButton3), for: .touchUpInside)
+        self.selectButton4.addTarget(self, action: #selector(onTapSelectButton4), for: .touchUpInside)
+
         DispatchQueue.main.async {
             self.configureUI()
             self.configureButtonUI()
@@ -184,6 +190,63 @@ class HalfMessageViewController: UIViewController {
             }
         }
 
+    }
+    
+    @objc private func onTapSendButton() {
+        if selectedButtonNumber == 1 {
+            print("정답!!")
+        } else {
+            print("땡!!")
+        }
+    }
+    
+    @objc private func onTapSelectButton1() {
+        self.selectedButtonNumber = 1
+        self.chatLabel.text = ""
+        let titleText = "헐 어떡해 ㅠㅠ 빨리 나아..."
+        var charIndex = 0.0
+        for letter in titleText {
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { timer in
+                self.chatLabel.text?.append(letter)
+            }
+            charIndex += 1
+        }
+    }
+    @objc private func onTapSelectButton2() {
+        self.selectedButtonNumber = 2
+        self.chatLabel.text = ""
+        let titleText = "헐 어떻게 ㅠㅠ 빨리 낳아..."
+        var charIndex = 0.0
+        for letter in titleText {
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { timer in
+                self.chatLabel.text?.append(letter)
+            }
+            charIndex += 1
+        }
+    }
+    @objc private func onTapSelectButton3() {
+        self.selectedButtonNumber = 3
+        self.chatLabel.text = ""
+        let titleText = "헐 어떡해 ㅠㅠ 빨리 낳아..."
+        var charIndex = 0.0
+        for letter in titleText {
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { timer in
+                self.chatLabel.text?.append(letter)
+            }
+            charIndex += 1
+        }
+    }
+    @objc private func onTapSelectButton4() {
+        self.selectedButtonNumber = 4
+        self.chatLabel.text = ""
+        let titleText = "헐 어떻게 ㅠㅠ 빨리 나아..."
+        var charIndex = 0.0
+        for letter in titleText {
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { timer in
+                self.chatLabel.text?.append(letter)
+            }
+            charIndex += 1
+        }
     }
     
     private func configureUI() {
