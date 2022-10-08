@@ -53,9 +53,27 @@ extension UIScreen {
             }
         }
         
+        var verticalSpacing: CGFloat {
+            switch self {
+            default: return CGFloat(10)
+            }
+        }
+        
+        var textBoxHeight: CGFloat {
+            switch self {
+            default: return CGFloat(40)
+            }
+        }
+        
         var horizontalPadding: CGFloat {
             switch self {
             default: return CGFloat(10)
+            }
+        }
+        
+        var messageEdgeInset: UIEdgeInsets {
+            switch self {
+            default: return UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16)
             }
         }
     }

@@ -19,6 +19,8 @@
 		0AE27EFC28F06F8300D79208 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0AE27EFB28F06F8300D79208 /* SnapKit */; };
 		0AE27F0628F15CB500D79208 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE27F0528F15CB500D79208 /* UIColor+.swift */; };
 		0AE27F0928F15DCD00D79208 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE27F0828F15DCD00D79208 /* UIScreen+.swift */; };
+		0AE27F0B28F15EEF00D79208 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE27F0A28F15EEF00D79208 /* Message.swift */; };
+		0AE27F0D28F15F8200D79208 /* HalfMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE27F0C28F15F8200D79208 /* HalfMessageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		0A96FBB128F045100082F4C9 /* MZSoftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZSoftUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0AE27F0528F15CB500D79208 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		0AE27F0828F15DCD00D79208 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
+		0AE27F0A28F15EEF00D79208 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		0AE27F0C28F15F8200D79208 /* HalfMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfMessageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				0A96FB9228F0450E0082F4C9 /* ViewController.swift */,
+				0AE27F0C28F15F8200D79208 /* HalfMessageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 		0AE27EFE28F078D200D79208 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0AE27F0A28F15EEF00D79208 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,8 +337,10 @@
 				0A96FB9328F0450E0082F4C9 /* ViewController.swift in Sources */,
 				0AE27F0928F15DCD00D79208 /* UIScreen+.swift in Sources */,
 				0AE27F0628F15CB500D79208 /* UIColor+.swift in Sources */,
+				0AE27F0B28F15EEF00D79208 /* Message.swift in Sources */,
 				0A96FB8F28F0450E0082F4C9 /* AppDelegate.swift in Sources */,
 				0A96FB9128F0450E0082F4C9 /* SceneDelegate.swift in Sources */,
+				0AE27F0D28F15F8200D79208 /* HalfMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
