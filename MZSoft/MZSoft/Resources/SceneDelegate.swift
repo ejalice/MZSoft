@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        guard let _ = (scene as? UIWindowScene) else { return }
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ResultViewController() // 자신의 시작 ViewController
+        window.rootViewController = ResultsViewController() // 자신의 시작 ViewController
         window.makeKeyAndVisible()
         self.window = window
     }
