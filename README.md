@@ -1,9 +1,8 @@
 # MZSoft
 # :iphone: MZMZ
-들리는 가사를 듣고 노래를 맞추는 앱입니다.
+모르면 배울 생각이라도 있으셔야죠
 
 ## :pushpin: Features
-- TTS
 
 ## :people_hugging: Authors
 ### Tech
