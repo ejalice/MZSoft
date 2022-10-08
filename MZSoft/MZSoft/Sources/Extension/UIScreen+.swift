@@ -52,10 +52,40 @@ extension UIScreen {
             default: return CGFloat(10)
             }
         }
+        /// 10
+        var verticalSpacing: CGFloat {
+            switch self {
+            default: return CGFloat(10)
+            }
+        }
+        /// 30
+        var verticalSpacing2: CGFloat {
+            switch self {
+            default: return CGFloat(30)
+            }
+        }
+        /// 50
+        var verticalSpacing3: CGFloat {
+            switch self {
+            default: return CGFloat(50)
+            }
+        }
+        
+        var textBoxHeight: CGFloat {
+            switch self {
+            default: return CGFloat(40)
+            }
+        }
         
         var horizontalPadding: CGFloat {
             switch self {
             default: return CGFloat(10)
+            }
+        }
+        
+        var messageEdgeInset: UIEdgeInsets {
+            switch self {
+            default: return UIEdgeInsets(top: 13, left: 16, bottom: 13, right: 16)
             }
         }
     }
