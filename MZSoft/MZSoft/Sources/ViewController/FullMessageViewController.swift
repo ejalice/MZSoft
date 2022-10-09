@@ -11,7 +11,7 @@ import UIKit
 class FullMessageViewController: UIViewController {
     let device = UIScreen.getDevice()
     var messageData: [Message] = [Message(type: .male, content: "혹시 집이 없으신가요?"), Message(type: .female, content: "ㅋ̄̈ ㅋ꙼̈ｦｦㅋ̤̫ㅋ̤̮ 웅"), Message(type: .male, content: "언제 시간 돼??"), Message(type: .female, content: "사흘 후에 어때?"), Message(type: .female, content: "캘박 필수~~")]
-    var dayData: [Day] = [Day(day: "일", date: "2", isToday: false), Day(day: "월", date: "3", isToday: false), Day(day: "화", date: "4", isToday: false), Day(day: "수", date: "5", isToday: false), Day(day: "목", date: "6", isToday: false), Day(day: "금", date: "7", isToday: false), Day(day: "토", date: "8", isToday: false)]
+    var dayData: [Day] = [Day(day: "일", date: "2", isToday: false), Day(day: "월", date: "3", isToday: true), Day(day: "화", date: "4", isToday: false), Day(day: "수", date: "5", isToday: false), Day(day: "목", date: "6", isToday: false), Day(day: "금", date: "7", isToday: false), Day(day: "토", date: "8", isToday: false)]
     private lazy var borderView: UIView = {
         let view = UIView()
         return view
@@ -176,6 +176,12 @@ class FullMessageViewController: UIViewController {
                 charIndex += 1
             }
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 11.5) {
+            UIView.animate(withDuration: 0.5) {
+                self.sendButton.alpha = 1
+            }
+            self.sendButton.isUserInteractionEnabled = true
+        }
     }
     
     @objc private func onTapSendButton() {
@@ -197,7 +203,7 @@ class FullMessageViewController: UIViewController {
 
         borderView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(device.defaultPadding)
-            make.horizontalEdges.equalToSuperview().offset(20)
+            make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalToSuperview().multipliedBy(0.8)
         }
         
@@ -217,19 +223,19 @@ class FullMessageViewController: UIViewController {
         
         dateLeftBorderView.snp.makeConstraints { make in
             make.centerY.equalTo(messageHeaderLabel.snp.centerY)
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview()
             make.height.equalTo(1)
         }
         
         dateRightBorderView.snp.makeConstraints { make in
             make.centerY.equalTo(messageHeaderLabel.snp.centerY)
-            make.trailing.equalToSuperview().offset(-20)
+            make.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
         
         myMessage.snp.makeConstraints { make in
             make.top.equalTo(messageHeaderLabel.snp.bottom).offset(30)
-            make.horizontalEdges.equalToSuperview().offset(-10)
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(70)
         }
         
@@ -243,31 +249,31 @@ class FullMessageViewController: UIViewController {
         
         dateLeftBorderView2.snp.makeConstraints { make in
             make.centerY.equalTo(messageHeaderLabel2.snp.centerY)
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview()
             make.height.equalTo(1)
         }
         
         dateRightBorderView2.snp.makeConstraints { make in
             make.centerY.equalTo(messageHeaderLabel2.snp.centerY)
-            make.trailing.equalToSuperview().offset(-20)
+            make.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
         
         messageCollectionView.snp.makeConstraints { make in
             make.top.equalTo(messageHeaderLabel2.snp.bottom).offset(device.verticalSpacing2)
             make.bottom.equalTo(messageFooterView.snp.top)
-            make.horizontalEdges.equalToSuperview().inset(device.horizontalPadding)
+            make.horizontalEdges.equalToSuperview()
         }
         
         messageFooterView.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(device.verticalPadding)
-            make.horizontalEdges.equalToSuperview().inset(device.horizontalPadding)
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(device.textBoxHeight)
             make.width.equalToSuperview().multipliedBy(0.85)
         }
         
         sendButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-device.horizontalPadding)
+            make.trailing.equalToSuperview()
             make.leading.equalTo(messageFooterView.snp.trailing)
             make.verticalEdges.equalTo(messageFooterView.snp.verticalEdges)
         }
@@ -335,8 +341,8 @@ extension FullMessageViewController: UICollectionViewDataSource, UICollectionVie
             // 232:41
             return CGSize(width: width, height: height)
         case false:
-            let width = (collectionView.frame.width - 100) / 7
-            let height = collectionView.frame.height * 0.9
+            let width = (collectionView.frame.width - 120) / 7
+            let height = collectionView.frame.height
 
             return CGSize(width: width, height: height)
         }
@@ -353,11 +359,14 @@ extension FullMessageViewController: UICollectionViewDataSource, UICollectionVie
 }
 
 class CalendarCollectionViewCell: UICollectionViewCell {
+    var dayModel: Day!
+    
     private lazy var dotLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 35)
         label.textColor = .appTintColor1
+        label.textAlignment = .center
         
         return label
     }()
@@ -390,14 +399,16 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     func configureUI(dayModel: Day) {
+        self.dayModel = dayModel
         self.dayLabel.text = dayModel.day
         self.dateButton.setTitle(dayModel.date, for: .normal)
         if dayModel.isToday {
-            self.dotLabel.text = "*"
+            self.dotLabel.text = "·"
         }
         
         if dayModel.date == "6" || dayModel.date == "7" {
             self.dateButton.backgroundColor = .appBackgroundColor2
+            self.dateButton.addTarget(self, action: #selector(onTapDateButton), for: .touchUpInside)
         }
         
         [dotLabel, dayLabel, dateButton].forEach{
@@ -414,12 +425,26 @@ class CalendarCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(dotLabel.snp.bottom)
             make.horizontalEdges.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.3)
+            make.width.equalTo(dayLabel.snp.height)
         }
         
         dateButton.snp.makeConstraints { make in
             make.top.equalTo(dayLabel.snp.bottom)
             make.horizontalEdges.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.3)
+            make.width.equalTo(dateButton.snp.height)
+        }
+    }
+    
+    @objc private func onTapDateButton() {
+        self.dateButton.backgroundColor = .appTintColor1
+        if dayModel.date == "6" {
+            print("성공")
+            let vc = HalfMessageViewController()
+            self.inputViewController?.present(vc, animated: false)
+            
+        } else {
+            print("실패")
         }
     }
 }
