@@ -18,7 +18,8 @@ struct Story {
         
         Story(type: .failOne, mainTitle: "GAME OVER", subTitle: "<이루어질 수 없는 사랑>", imageName: "stage2_failOne", content: "너 어디야?..\n오늘 만나기로 했잖아", buttonContent: "홈으로"),
         
-        Story(type: .failOne, mainTitle: "GAME OVER", subTitle: "<응애>", imageName: "stage1_failOne", content: "썸녀를 엄마로\n만들어 버렸습니다.", buttonContent: "홈으로")
+        Story(type: .failOne, mainTitle: "GAME OVER", subTitle: "<응애>", imageName: "stage1_failOne", content: "썸녀를 엄마로\n만들어 버렸습니다.", buttonContent: "홈으로"),
+        Story(type: .failOne, mainTitle: "성공", subTitle: "end", imageName: "ending", content: "오늘도 야무졌다! ^^", buttonContent: "홈으로")
     ]
     
     let type: ViewType
@@ -35,4 +36,5 @@ enum ViewType {
     case failOne // 애기+감기
     case failTwo // 빡침
     case failThree //응애
+    case ending
 }

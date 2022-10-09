@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Lottie
 
 class ResultsViewController: UIViewController {
     let device = UIScreen.getDevice()
@@ -93,6 +94,9 @@ class ResultsViewController: UIViewController {
         case .prolog:
             button.addTarget(self, action: #selector(startnext), for: .touchUpInside)
             
+        case .ending:
+            button.addTarget(self, action: #selector(moveToHome), for: .touchUpInside)
+
         default:
             button.addTarget(self, action: #selector(moveToHome), for: .touchUpInside)
         }
@@ -113,6 +117,9 @@ class ResultsViewController: UIViewController {
             vc = vc2
         } else {
             vc = ResultsViewController()
+            let vc2 = vc as! ResultsViewController
+            vc2.storyContent = Story.story[6]
+            vc = vc2
         }
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
@@ -128,8 +135,18 @@ class ResultsViewController: UIViewController {
     }
     
     private func configure(story: Story) {
+        if story.imageName == "lottie" {
+            let animationView = AnimationView()
+            animationView.frame = imageView.bounds
+            animationView.animation = Animation.named("ending")
+            animationView.contentMode = .scaleAspectFit
+            animationView.loopMode = .playOnce
+            animationView.play()
+            imageView.addSubview(animationView)
+        } else {
+            imageView.image = UIImage(named: story.imageName)
+        }
         mainTitleLabel.text = story.mainTitle
-        imageView.image = UIImage(named: story.imageName)
         subTitleLabel.text = story.subTitle
         contentLabel.text = story.content
         button.setTitle(story.buttonContent, for: .normal)
