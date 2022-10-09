@@ -196,9 +196,12 @@ class HalfMessageViewController: UIViewController {
         let vc = ResultsViewController()
         if selectedButtonNumber == 1 {
             vc.storyContent = Story.story[0]
-        } else if selectedButtonNumber == 2 || selectedButtonNumber == 3 {
+        } else if selectedButtonNumber == 2{
             vc.storyContent = Story.story[2]
-        } else {
+        } else if selectedButtonNumber == 3 {
+            vc.storyContent = Story.story[5]
+        }
+        else {
             vc.storyContent = Story.story[3]
         }
         vc.modalPresentationStyle = .fullScreen
