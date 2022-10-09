@@ -12,6 +12,8 @@ import UIKit
 
 class PrologViewController: UIViewController {
 
+    var stageNum: Int?
+    
     var storyContent: [Story] = [
         Story(type: .prolog, mainTitle: "Stage 1", subTitle: "썸녀를 만나다", imageName: "aliceProfile", content: "23년차 모쏠 인생..\n드디어 썸녀가 생겼다.\n\n\n.\n.\n.\n\n이번에는 잘해봐야지!", buttonContent: "시작"), Story(type: .prolog, mainTitle: "Stage 2", subTitle: "고백 해도 될까?", imageName: "aliceProfile", content: "썸을 탄 지 2주..\n이제는 때가 됐다.\n\n그녀가\n나의 것이 될 때..\n.\n.\n.\n", buttonContent: "시작")]
     
@@ -96,21 +98,27 @@ class PrologViewController: UIViewController {
         subTitleLabel.text = story.subTitle
         subTitleLabel.font = .appDefaultFont(size: 15)
         contentLabel.text = story.content
+        contentLabel.textColor = .black
         startButton.setTitle(story.buttonContent, for: .normal)
-        
-        let stringValue = story.content
-
-        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: stringValue)
-        attributedString.setColorForText(textForAttribute: "썸을 탄 지 2주..\n이제는 ", withColor: UIColor.black)
-        attributedString.setColorForText(textForAttribute: "때", withColor: UIColor.red)
-        attributedString.setColorForText(textForAttribute: "가 됐다.\n\n그녀가\n나의 것이 될", withColor: UIColor.black)
-        attributedString.setColorForText(textForAttribute: " 때", withColor: UIColor.red)
-        attributedString.setColorForText(textForAttribute: "..\n.\n.\n.\n", withColor: UIColor.black)
+        if stageNum != 1 {
+            let attributedString1: NSMutableAttributedString = NSMutableAttributedString(string: "썸을 탄 지 2주..\n이제는")
+            let attributedString2: NSMutableAttributedString = NSMutableAttributedString(string: " 때")
+            let attributedString3: NSMutableAttributedString = NSMutableAttributedString(string: "가 됐다.\n\n그녀가\n나의 것이 될")
+            let attributedString4: NSMutableAttributedString = NSMutableAttributedString(string: " 때")
+            let attributedString5: NSMutableAttributedString = NSMutableAttributedString(string: "..\n.\n.\n.\n")
+            attributedString1.setColorForText(textForAttribute: "썸을 탄 지 2주..\n이제는", withColor: UIColor.black)
+            attributedString2.setColorForText(textForAttribute: " 때", withColor: UIColor.red)
+            attributedString3.setColorForText(textForAttribute: "가 됐다.\n\n그녀가\n나의 것이 될", withColor: UIColor.black)
+            attributedString4.setColorForText(textForAttribute: " 때", withColor: UIColor.red)
+            attributedString1.append(attributedString2)
+            attributedString1.append(attributedString3)
+            attributedString1.append(attributedString4)
+            attributedString1.append(attributedString5)
+            contentLabel.attributedText = attributedString1
+        }
         contentLabel.font = .appDefaultFont(size: 17)
-
-        contentLabel.attributedText = attributedString
-        
-        startButton.addTarget(self, action: #selector(moveToHome), for: .touchUpInside)
+        homeButton.addTarget(self, action: #selector(moveToHome), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(moveToNext), for: .touchUpInside)
     }
 
     private func setConstratins(story: Story) {
@@ -152,11 +160,21 @@ class PrologViewController: UIViewController {
     }
     
     @objc func moveToHome() {
-        self.navigationController?.popToRootViewController(animated: true)
+        let vc = HomeViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     // TODO: 데이터 넘겨주는 로직 짜야함 
     @objc func moveToNext() {
-//        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+        var vc = UIViewController()
+        if stageNum == 0 {
+            vc = HalfMessageViewController()
+        } else {
+            vc = FullMessageViewController()
+        }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+        
     }
 
 }
