@@ -102,12 +102,29 @@ class ResultsViewController: UIViewController {
         print("START")
     }
     
-    @objc func moveToNext(){
-        print("NEXT")
+    @objc func moveToNext() {
+        let stageNum = UserDefaults.standard.integer(forKey: "stage")
+        var vc: UIViewController!
+        if stageNum == 0 {
+            vc = PrologViewController()
+            let vc2 = vc as! PrologViewController
+            UserDefaults.standard.set(1, forKey: "stage")
+            vc2.stageNum = stageNum
+            vc = vc2
+        } else {
+            vc = ResultsViewController()
+        }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+        
     }
     
     @objc func moveToHome(){
-        print("HOME")
+        let vc = HomeViewController()
+        UserDefaults.standard.set(0, forKey: "stage")
+        
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
     }
     
     private func configure(story: Story) {
