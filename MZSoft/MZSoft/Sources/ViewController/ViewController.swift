@@ -28,6 +28,11 @@ class ViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
+    override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            let vc = PrologViewController()
+            self.present(vc, animated: true)
+        }
 
 }
 
