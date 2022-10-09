@@ -172,7 +172,7 @@ class HalfMessageViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             self.chatLabel.text = ""
             var charIndex = 0.0
-            let titleText = "썸녀가 아프다고 한다. 뭐라고 해야 하지?"
+            let titleText = "썸녀가 아프다. 뭐라고 해야 하지?"
             for letter in titleText {
                 Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { timer in
                     self.chatLabel.text?.append(letter)
@@ -193,11 +193,16 @@ class HalfMessageViewController: UIViewController {
     }
     
     @objc private func onTapSendButton() {
+        let vc = ResultsViewController()
         if selectedButtonNumber == 1 {
-            print("정답!!")
+            vc.storyContent = Story.story[0]
+        } else if selectedButtonNumber == 2 || selectedButtonNumber == 3 {
+            vc.storyContent = Story.story[2]
         } else {
-            print("땡!!")
+            vc.storyContent = Story.story[3]
         }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
     }
     
     @objc private func onTapSelectButton1() {
@@ -296,13 +301,13 @@ class HalfMessageViewController: UIViewController {
         
         messageFooterView.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(device.verticalPadding)
-            make.horizontalEdges.equalToSuperview().inset(device.horizontalPadding)
+            make.leading.equalToSuperview().inset(10)
             make.height.equalTo(device.textBoxHeight)
-            make.width.equalToSuperview().multipliedBy(0.85)
+            make.width.equalToSuperview().multipliedBy(0.82)
         }
         
         sendButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-device.horizontalPadding)
+            make.trailing.equalToSuperview().inset(device.horizontalPadding)
             make.leading.equalTo(messageFooterView.snp.trailing)
             make.verticalEdges.equalTo(messageFooterView.snp.verticalEdges)
         }
@@ -329,22 +334,22 @@ class HalfMessageViewController: UIViewController {
         selectButton1.snp.makeConstraints { make in
             make.top.equalTo(borderView.snp.bottom).offset(device.verticalPadding)
             make.horizontalEdges.equalToSuperview().inset(device.defaultPadding)
-            make.height.equalToSuperview().multipliedBy(0.05)
+            make.height.equalToSuperview().multipliedBy(0.065)
         }
         selectButton2.snp.makeConstraints { make in
-            make.top.equalTo(selectButton1.snp.bottom).offset(device.verticalSpacing)
+            make.top.equalTo(selectButton1.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview().inset(device.defaultPadding)
-            make.height.equalToSuperview().multipliedBy(0.05)
+            make.height.equalToSuperview().multipliedBy(0.065)
         }
         selectButton3.snp.makeConstraints { make in
-            make.top.equalTo(selectButton2.snp.bottom).offset(device.verticalSpacing)
+            make.top.equalTo(selectButton2.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview().inset(device.defaultPadding)
-            make.height.equalToSuperview().multipliedBy(0.05)
+            make.height.equalToSuperview().multipliedBy(0.065)
         }
         selectButton4.snp.makeConstraints { make in
-            make.top.equalTo(selectButton3.snp.bottom).offset(device.verticalSpacing)
+            make.top.equalTo(selectButton3.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview().inset(device.defaultPadding)
-            make.height.equalToSuperview().multipliedBy(0.05)
+            make.height.equalToSuperview().multipliedBy(0.065)
         }
     }
     private func showCell(row: Int) {
@@ -392,6 +397,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
     
     private let label: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = .appDefaultFont(size: 15)
         return label
     }()

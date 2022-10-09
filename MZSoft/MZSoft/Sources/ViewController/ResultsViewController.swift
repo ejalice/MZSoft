@@ -10,12 +10,7 @@ import SnapKit
 
 class ResultsViewController: UIViewController {
     let device = UIScreen.getDevice()
-    
-    var storyContent: [Story] = [
-        Story(type: .success, mainTitle: "성공", subTitle: "", imageName: "aliceProfile", content: "썸녀가 호감을 보입니다", buttonContent: "다음"),
-        Story(type: .failOne, mainTitle: "GAME OVER", subTitle: "<응애>", imageName: "aliceProfile", content: "썸녀를 엄마로\n만들어 버렸습니다.", buttonContent: "홈으로"),
-        Story(type: .failTwo, mainTitle: "GAME OVER", subTitle: "<어떻게>", imageName: "aliceProfile", content: "니 맞춤법이 더 어.떻.게 ^^", buttonContent: "홈으로")
-   , ]
+    var storyContent: Story!
     
     private let mainTitleLabel: UILabel = {
         let label = UILabel()
@@ -66,6 +61,7 @@ class ResultsViewController: UIViewController {
         button.backgroundColor = .appTintColor1
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.cornerRadius = 8
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
@@ -81,10 +77,37 @@ class ResultsViewController: UIViewController {
          backgroundImageView, contentLabel,
          button].forEach { self.view.addSubview($0) }
         
-        configure(story: storyContent[0])
-        configureLabel(story: storyContent[0])
-        setConstraints(story: storyContent[0])
+        configure(story: storyContent)
+        configureLabel(story: storyContent)
+        setConstraints(story: storyContent)
+        buttonConfigure(story: storyContent)
+        
 
+    }
+    
+    private func buttonConfigure(story: Story) {
+        switch story.type {
+        case .success:
+            button.addTarget(self, action: #selector(moveToNext), for: .touchUpInside)
+            
+        case .prolog:
+            button.addTarget(self, action: #selector(startnext), for: .touchUpInside)
+            
+        default:
+            button.addTarget(self, action: #selector(moveToHome), for: .touchUpInside)
+        }
+    }
+    
+    @objc func startnext() {
+        print("START")
+    }
+    
+    @objc func moveToNext(){
+        print("NEXT")
+    }
+    
+    @objc func moveToHome(){
+        print("HOME")
     }
     
     private func configure(story: Story) {
@@ -132,17 +155,17 @@ class ResultsViewController: UIViewController {
     private func setConstraints(story: Story) {
         mainTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalToSuperview().inset(112) // 390/112
+            make.bottom.equalToSuperview().multipliedBy(0.13)
         }
         
         subTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(mainTitleLabel.snp.bottom).offset(12)
+            make.top.equalTo(mainTitleLabel.snp.bottom).multipliedBy(1.3)
         }
         
         imageView.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(47)
+            make.top.equalTo(subTitleLabel.snp.bottom).multipliedBy(1.53)
             make.width.equalToSuperview().multipliedBy(0.72) // 282/390
             make.height.equalTo(imageView.snp.width)
             
@@ -152,9 +175,9 @@ class ResultsViewController: UIViewController {
             make.centerX.equalTo(self.view)
             switch story.type {
             case .failTwo:
-                make.top.equalTo(imageView.snp.bottom).offset(54)
+                make.top.equalTo(imageView.snp.bottom).multipliedBy(0.19) //1.19
             default:
-                make.top.equalTo(imageView.snp.bottom).offset(35)
+                make.top.equalTo(imageView.snp.bottom).multipliedBy(1.12) //(35+282=317):35
 
             }
             
@@ -162,10 +185,12 @@ class ResultsViewController: UIViewController {
         
         button.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.bottom.equalToSuperview().inset(50)
-            make.width.equalToSuperview().multipliedBy(0.8) // 350/390
+            make.bottom.equalToSuperview().multipliedBy(0.94)
+            
+            make.width.equalToSuperview().multipliedBy(0.89) // 350/390
             make.height.equalTo(button.snp.width).multipliedBy(0.16) // 350/56
         }
+        
     }
     
 }
