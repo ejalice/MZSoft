@@ -10,6 +10,7 @@ import SnapKit
 
 class HomeViewController: UIViewController {
 
+    var stageNum: Int = 0
     var storyContent: Story =
         Story(type: .success, mainTitle: "", subTitle: "", imageName: "aliceProfile", content: "무식도 논란이 되는 시대!\n어쩌구저쩌구...\n연애에 성공할 수 있을까?!", buttonContent: "시작하기")
     
@@ -54,6 +55,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.dictionaryRepresentation().keys.contains("stage") {
+            stageNum = UserDefaults.standard.integer(forKey: "stage")
+        } else {
+            UserDefaults.standard.set(0, forKey: "stage")
+        }
         self.view.backgroundColor = .appTintColor1
 //        self.view.addSubview(emptyView)
         self.view.addSubview(contentLabel)
@@ -79,7 +85,10 @@ class HomeViewController: UIViewController {
         contentLabel.textColor = gradientColor(bounds: contentLabel.bounds, gradientLayer: gradient)
     }
         @objc func pushNavigation() {
-    //        self.navigationController?.pushViewController(SecondViewController(), animated: true)
+            let vc = PrologViewController()
+            vc.stageNum = stageNum
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         }
     
     // Constraints
