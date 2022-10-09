@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
 
     var stageNum: Int = 0
     var storyContent: Story =
-        Story(type: .success, mainTitle: "", subTitle: "", imageName: "aliceProfile", content: "무식도 논란이 되는 시대!\n어쩌구저쩌구...\n연애에 성공할 수 있을까?!", buttonContent: "시작하기")
+        Story(type: .success, mainTitle: "", subTitle: "", imageName: "AppLogo", content: "상식 빵! 눈치 빵!\n\n연애까지 빵?!", buttonContent: "시작하기")
     
     private let contentLabel: UILabel = {
         let content = UILabel(frame: CGRect(x: 0, y: 0, width: 400, height: 200))
@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     
     private let mainImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         
         return imageView
     }()
@@ -96,29 +96,29 @@ class HomeViewController: UIViewController {
         
         mainImage.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view.snp.top).offset(128)
-            make.width.equalToSuperview().multipliedBy(0.72) // 282/390
-            make.height.equalTo(mainImage.snp.width)
+            make.bottom.equalToSuperview().multipliedBy(0.311)
+            make.width.equalToSuperview().multipliedBy(0.9)
+            make.height.equalTo(mainImage.snp.width).multipliedBy(0.2647)
             
         }
         
         contentLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(mainImage.snp.bottom).offset(129)
+            make.bottom.equalToSuperview().multipliedBy(0.542)
             
         }
         
         startButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.bottom.equalToSuperview().inset(106)
-            make.width.equalToSuperview().multipliedBy(0.8) // 350/390
-            make.height.equalTo(startButton.snp.width).multipliedBy(0.16) // 350/56
+            make.bottom.equalToSuperview().multipliedBy(0.835)
+            make.width.equalToSuperview().multipliedBy(0.89)
+            make.height.equalTo(continueButton.snp.width).multipliedBy(0.16)
         }
         continueButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(startButton.snp.bottom).offset(15)
-            make.width.equalToSuperview().multipliedBy(0.8) // 350/390
-            make.height.equalTo(startButton.snp.width).multipliedBy(0.16) // 350/56
+            make.bottom.equalToSuperview().multipliedBy(0.92)
+            make.width.equalToSuperview().multipliedBy(0.89)
+            make.height.equalTo(continueButton.snp.width).multipliedBy(0.16)
         }
     }
     func getGradientLayer(bounds : CGRect) -> CAGradientLayer{
