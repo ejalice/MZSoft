@@ -15,7 +15,7 @@ class PrologViewController: UIViewController {
     var stageNum: Int?
     
     var storyContent: [Story] = [
-        Story(type: .prolog, mainTitle: "Stage 1", subTitle: "썸녀를 만나다", imageName: "aliceProfile", content: "23년차 모쏠 인생..\n드디어 썸녀가 생겼다.\n\n\n.\n.\n.\n\n이번에는 잘해봐야지!", buttonContent: "시작"), Story(type: .prolog, mainTitle: "Stage 2", subTitle: "고백 해도 될까?", imageName: "aliceProfile", content: "썸을 탄 지 2주..\n이제는 때가 됐다.\n\n그녀가\n나의 것이 될 때..\n.\n.\n.\n", buttonContent: "시작")]
+        Story(type: .prolog, mainTitle: "Stage 1", subTitle: "썸녀를 만나다", imageName: "stage1_prolog", content: "23년차 모쏠 인생..\n드디어 썸녀가 생겼다.\n\n\n.\n.\n.\n\n이번에는 잘해봐야지!", buttonContent: "시작"), Story(type: .prolog, mainTitle: "Stage 2", subTitle: "고백 해도 될까?", imageName: "stage2_prolog", content: "썸을 탄 지 2주..\n이제는 때가 됐다.\n\n그녀가\n나의 것이 될 때..\n.\n.\n.\n", buttonContent: "시작")]
     
     private let blackView: UIView = {
         let view = UIView()
@@ -126,11 +126,11 @@ class PrologViewController: UIViewController {
             make.centerX.equalTo(self.view)
             make.top.equalTo(self.view)
             make.width.equalTo(self.view)
-            make.height.equalTo(123)
+            make.height.equalTo(blackView.snp.width).multipliedBy(0.31)
         }
         MainTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(blackView)
-            make.top.equalToSuperview().offset(57)
+            make.bottom.equalTo(blackView.snp.bottom).multipliedBy(0.71)
         }
         subTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(blackView)
@@ -144,16 +144,17 @@ class PrologViewController: UIViewController {
         }
         mainImageView.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view).offset(176)
-            make.width.height.equalTo(282)
+            make.top.equalTo(blackView.snp.bottom).multipliedBy(1.43)
+            make.height.equalToSuperview().multipliedBy(0.33)
+            make.width.equalTo(mainImageView.snp.height)
         }
         contentLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(mainImageView.snp.bottom).offset(45)
+            make.top.equalTo(mainImageView.snp.bottom).multipliedBy(1.1)
         }
         startButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(contentLabel.snp.bottom).offset(86)
+            make.top.equalTo(contentLabel.snp.bottom).multipliedBy(1.12)
             make.width.equalToSuperview().multipliedBy(0.8) // 350/390
             make.height.equalTo(startButton.snp.width).multipliedBy(0.16) // 350/56
         }
