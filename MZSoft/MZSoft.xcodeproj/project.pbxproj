@@ -24,8 +24,6 @@
 		0AE27F1028F1D7D200D79208 /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AE27F0F28F1D7D200D79208 /* neodgm.ttf */; };
 		0AE27F1228F1D8BD00D79208 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE27F1128F1D8BD00D79208 /* UIFont+.swift */; };
 		0AE27F1428F1F06000D79208 /* FullMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE27F1328F1F06000D79208 /* FullMessageViewController.swift */; };
-		0AE27F1728F2BD9700D79208 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0AE27F1628F2BD9700D79208 /* Lottie */; };
-		0AE27F2128F2CEC600D79208 /* Gifu in Frameworks */ = {isa = PBXBuildFile; productRef = 0AE27F2028F2CEC600D79208 /* Gifu */; };
 		83CE80A228F26F0C00EF951D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CE80A128F26F0C00EF951D /* HomeViewController.swift */; };
 		83CE80A428F2933400EF951D /* PrologViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CE80A328F2933400EF951D /* PrologViewController.swift */; };
 		B61CE19D28F1F17C00F8CCAA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61CE19C28F1F17C00F8CCAA /* ResultsViewController.swift */; };
@@ -82,8 +80,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AE27EFC28F06F8300D79208 /* SnapKit in Frameworks */,
-				0AE27F1728F2BD9700D79208 /* Lottie in Frameworks */,
-				0AE27F2128F2CEC600D79208 /* Gifu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +252,6 @@
 			name = MZSoft;
 			packageProductDependencies = (
 				0AE27EFB28F06F8300D79208 /* SnapKit */,
-				0AE27F1628F2BD9700D79208 /* Lottie */,
-				0AE27F2028F2CEC600D79208 /* Gifu */,
 			);
 			productName = MZSoft;
 			productReference = 0A96FB8B28F0450E0082F4C9 /* MZSoft.app */;
@@ -777,16 +771,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0AE27EFA28F06F8300D79208 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		0AE27F1628F2BD9700D79208 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AE27F1528F2BD9700D79208 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		0AE27F2028F2CEC600D79208 /* Gifu */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AE27F1F28F2CEC600D79208 /* XCRemoteSwiftPackageReference "Gifu" */;
-			productName = Gifu;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
