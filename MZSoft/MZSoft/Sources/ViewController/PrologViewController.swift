@@ -162,7 +162,7 @@ class PrologViewController: UIViewController {
     @objc func moveToHome() {
         let vc = HomeViewController()
         vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+        self.present(vc, animated: false)
     }
     // TODO: 데이터 넘겨주는 로직 짜야함 
     @objc func moveToNext() {
