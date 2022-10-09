@@ -86,8 +86,8 @@ class PrologViewController: UIViewController {
         self.view.addSubview(contentLabel)
         self.view.addSubview(startButton)
         
-        configure(story: storyContent[1])
-        setConstratins(story: storyContent[1])
+        configure(story: storyContent[stageNum ?? 0])
+        setConstratins(story: storyContent[stageNum ?? 0])
         // Do any additional setup after loading the view.
     }
     // TODO: 두 번째 때 색깔 바꿔야함
@@ -100,7 +100,7 @@ class PrologViewController: UIViewController {
         contentLabel.text = story.content
         contentLabel.textColor = .black
         startButton.setTitle(story.buttonContent, for: .normal)
-        if stageNum != 1 {
+        if stageNum == 1 {
             let attributedString1: NSMutableAttributedString = NSMutableAttributedString(string: "썸을 탄 지 2주..\n이제는")
             let attributedString2: NSMutableAttributedString = NSMutableAttributedString(string: " 때")
             let attributedString3: NSMutableAttributedString = NSMutableAttributedString(string: "가 됐다.\n\n그녀가\n나의 것이 될")
