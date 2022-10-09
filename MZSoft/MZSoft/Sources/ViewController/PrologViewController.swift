@@ -88,7 +88,7 @@ class PrologViewController: UIViewController {
         setConstratins(story: storyContent[1])
         // Do any additional setup after loading the view.
     }
-    
+    // TODO: 두 번째 때 색깔 바꿔야함
     private func configure(story: Story) {
         MainTitleLabel.text = story.mainTitle
         MainTitleLabel.font = .appDefaultFont(size: 30)
@@ -110,6 +110,7 @@ class PrologViewController: UIViewController {
 
         contentLabel.attributedText = attributedString
         
+        startButton.addTarget(self, action: #selector(moveToHome), for: .touchUpInside)
     }
 
     private func setConstratins(story: Story) {
@@ -117,11 +118,11 @@ class PrologViewController: UIViewController {
             make.centerX.equalTo(self.view)
             make.top.equalTo(self.view)
             make.width.equalTo(self.view)
-            make.height.equalTo(76)
+            make.height.equalTo(123)
         }
         MainTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(blackView)
-            make.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview().offset(57)
         }
         subTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(blackView)
@@ -129,7 +130,7 @@ class PrologViewController: UIViewController {
         }
         homeButton.snp.makeConstraints { make in
             make.width.height.equalTo(35)
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(68)
             make.right.equalTo(self.view.snp.right).offset(-20)
 //            make.bottom.equalTo(self.blackView.snp.bottom).offset(-24)
         }
@@ -148,6 +149,14 @@ class PrologViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.8) // 350/390
             make.height.equalTo(startButton.snp.width).multipliedBy(0.16) // 350/56
         }
+    }
+    
+    @objc func moveToHome() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    // TODO: 데이터 넘겨주는 로직 짜야함 
+    @objc func moveToNext() {
+//        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
     }
 
 }

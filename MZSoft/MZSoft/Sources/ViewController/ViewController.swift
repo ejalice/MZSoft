@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let vc = HalfMessageViewController()
+        let vc = PrologViewController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: false)
     }
@@ -35,11 +35,6 @@ class ViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            let vc = PrologViewController()
-            self.present(vc, animated: true)
-        }
 
 }
 
