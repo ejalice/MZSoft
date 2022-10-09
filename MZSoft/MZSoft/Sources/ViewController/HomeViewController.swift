@@ -61,7 +61,6 @@ class HomeViewController: UIViewController {
             UserDefaults.standard.set(0, forKey: "stage")
         }
         self.view.backgroundColor = .appTintColor1
-//        self.view.addSubview(emptyView)
         self.view.addSubview(contentLabel)
         self.view.addSubview(mainImage)
         self.view.addSubview(startButton)
@@ -70,7 +69,8 @@ class HomeViewController: UIViewController {
         
         configure(story: storyContent)
         setConstraints(story: storyContent)
-        startButton.addTarget(self, action: #selector(moveNext), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(newStart), for: .touchUpInside)
+        continueButton.addTarget(self, action: #selector(moveNext), for: .touchUpInside)
     }
     
     private func configure(story: Story) {
@@ -90,7 +90,14 @@ class HomeViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
-    
+    @objc func newStart() {
+        let vc = PrologViewController()
+        UserDefaults.standard.set(0, forKey: "stage")
+        stageNum = UserDefaults.standard.integer(forKey: "stage")
+        vc.stageNum = stageNum
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
     // Constraints
     private func setConstraints(story: Story) {
         
