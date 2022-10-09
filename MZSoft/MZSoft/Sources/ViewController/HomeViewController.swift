@@ -113,6 +113,7 @@ class HomeViewController: UIViewController {
         }
     }
     func getGradientLayer(bounds : CGRect) -> CAGradientLayer{
+        // 다른 Gradient를 사용하려면 아래의 Colors를 바꾸면 됩니다~
         let gradient = CAGradientLayer()
         gradient.frame = bounds
         //order of gradient colors
