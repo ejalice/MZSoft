@@ -100,6 +100,7 @@ class PrologViewController: UIViewController {
         contentLabel.text = story.content
         contentLabel.textColor = .black
         startButton.setTitle(story.buttonContent, for: .normal)
+        startButton.titleLabel?.font = .appDefaultFont(size: 17)
         if stageNum == 1 {
             let attributedString1: NSMutableAttributedString = NSMutableAttributedString(string: "썸을 탄 지 2주..\n이제는")
             let attributedString2: NSMutableAttributedString = NSMutableAttributedString(string: " 때")

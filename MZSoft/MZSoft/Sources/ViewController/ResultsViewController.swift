@@ -93,20 +93,34 @@ class ResultsViewController: UIViewController {
         [mainTitleLabel,
          imageView, subTitleLabel,
          backgroundImageView, contentLabel,
-         button,
-        successEffectLeft,
-        successEffectRight].forEach { self.view.addSubview($0) }
+         button
+        ].forEach { self.view.addSubview($0) }
+        
         
         configure(story: storyContent)
         configureLabel(story: storyContent)
         setConstraints(story: storyContent)
         buttonConfigure(story: storyContent)
+        
     }
     
     private func buttonConfigure(story: Story) {
         switch story.type {
         case .success:
             button.addTarget(self, action: #selector(moveToNext), for: .touchUpInside)
+            self.view.addSubview(successEffectLeft)
+            self.view.addSubview(successEffectRight)
+            successEffectLeft.snp.makeConstraints { make in
+                make.leading.equalTo(self.view).offset(102)
+                make.centerY.equalTo(mainTitleLabel.snp.top).offset(2)
+                make.width.height.equalTo(17)
+            }
+            
+            successEffectRight.snp.makeConstraints { make in
+                make.leading.equalTo(self.view).offset(280)
+                make.centerY.equalTo(mainTitleLabel.snp.bottom).offset(2)
+                make.width.height.equalTo(17)
+            }
             
         case .prolog:
             button.addTarget(self, action: #selector(startnext), for: .touchUpInside)
@@ -245,17 +259,7 @@ class ResultsViewController: UIViewController {
             make.height.equalTo(button.snp.width).multipliedBy(0.16) // 350/56
         }
         
-        successEffectLeft.snp.makeConstraints { make in
-            make.leading.equalTo(self.view).offset(116)
-            make.centerY.equalTo(mainTitleLabel.snp.top).offset(2)
-            make.width.height.equalTo(17)
-        }
         
-        successEffectRight.snp.makeConstraints { make in
-            make.leading.equalTo(self.view).offset(252)
-            make.centerY.equalTo(mainTitleLabel.snp.bottom).offset(2)
-            make.width.height.equalTo(17)
-        }
     }
     
 }
