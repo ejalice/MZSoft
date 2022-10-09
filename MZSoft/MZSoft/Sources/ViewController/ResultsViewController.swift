@@ -135,13 +135,17 @@ class ResultsViewController: UIViewController {
             backgroundImageView.image = image
             
             backgroundImageView.snp.makeConstraints { make in
-                make.top.equalTo(imageView.snp.bottom).offset(54)
+                make.top.equalTo(imageView.snp.bottom).multipliedBy(1.063)
+                make.centerX.equalTo(self.view)
                 make.width.equalTo(contentLabel.intrinsicContentSize.width + 34)
                 make.height.equalTo(contentLabel.intrinsicContentSize.height + 51)
             }
             contentLabel.snp.makeConstraints { make in
-                make.centerX.equalTo(backgroundImageView.snp.centerX)
-                make.top.equalTo(backgroundImageView.snp.top).offset(19)
+//                make.centerX.equalTo(backgroundImageView.snp.centerX)
+//                make.top.equalTo(backgroundImageView.snp.top).offset(19)
+                make.centerX.equalTo(self.view)
+                make.top.equalTo(imageView.snp.bottom).multipliedBy(1.063)
+
             }
         default:
             print("")
@@ -155,12 +159,12 @@ class ResultsViewController: UIViewController {
     private func setConstraints(story: Story) {
         mainTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.bottom.equalToSuperview().multipliedBy(0.13)
+            make.bottom.equalToSuperview().multipliedBy(0.175)
         }
         
         subTitleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(mainTitleLabel.snp.bottom).multipliedBy(1.3)
+            make.bottom.equalToSuperview().multipliedBy(0.21)
         }
         
         imageView.snp.makeConstraints { make in
@@ -168,17 +172,15 @@ class ResultsViewController: UIViewController {
             make.top.equalTo(subTitleLabel.snp.bottom).multipliedBy(1.53)
             make.width.equalToSuperview().multipliedBy(0.72) // 282/390
             make.height.equalTo(imageView.snp.width)
-            
         }
         
         contentLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
             switch story.type {
             case .failTwo:
-                make.top.equalTo(imageView.snp.bottom).multipliedBy(0.19) //1.19
+                make.top.equalTo(imageView.snp.bottom).multipliedBy(1.095)
             default:
-                make.top.equalTo(imageView.snp.bottom).multipliedBy(1.12) //(35+282=317):35
-
+                make.top.equalTo(imageView.snp.bottom).multipliedBy(1.063)
             }
             
         }
