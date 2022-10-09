@@ -67,6 +67,22 @@ class ResultsViewController: UIViewController {
         
         return button
     }()
+    
+    private let successEffectLeft: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "successEffect")
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+        
+    private let successEffectRight: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "successEffect")
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +93,9 @@ class ResultsViewController: UIViewController {
         [mainTitleLabel,
          imageView, subTitleLabel,
          backgroundImageView, contentLabel,
-         button].forEach { self.view.addSubview($0) }
+         button,
+        successEffectLeft,
+        successEffectRight].forEach { self.view.addSubview($0) }
         
         configure(story: storyContent)
         configureLabel(story: storyContent)
@@ -227,6 +245,17 @@ class ResultsViewController: UIViewController {
             make.height.equalTo(button.snp.width).multipliedBy(0.16) // 350/56
         }
         
+        successEffectLeft.snp.makeConstraints { make in
+            make.leading.equalTo(self.view).offset(116)
+            make.centerY.equalTo(mainTitleLabel.snp.top).offset(2)
+            make.width.height.equalTo(17)
+        }
+        
+        successEffectRight.snp.makeConstraints { make in
+            make.leading.equalTo(self.view).offset(252)
+            make.centerY.equalTo(mainTitleLabel.snp.bottom).offset(2)
+            make.width.height.equalTo(17)
+        }
     }
     
 }

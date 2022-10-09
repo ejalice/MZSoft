@@ -51,7 +51,21 @@ class HomeViewController: UIViewController {
         return button
     }()
     
-//    let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+    private let homeEffectLeft: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "homeEffect")
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+        
+    private let homeEffectRight: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "homeEffect")
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +79,8 @@ class HomeViewController: UIViewController {
         self.view.addSubview(mainImage)
         self.view.addSubview(startButton)
         self.view.addSubview(continueButton)
-        
+        self.view.addSubview(homeEffectLeft)
+        self.view.addSubview(homeEffectRight)
         
         configure(story: storyContent)
         setConstraints(story: storyContent)
@@ -115,6 +130,18 @@ class HomeViewController: UIViewController {
             
         }
         
+        homeEffectLeft.snp.makeConstraints { make in
+            make.width.height.equalTo(21)
+            make.bottom.equalTo(contentLabel.snp.top)
+            make.leading.equalTo(self.view).offset(78)
+        }
+        
+        homeEffectRight.snp.makeConstraints { make in
+            make.width.height.equalTo(21)
+            make.centerY.equalTo(contentLabel.snp.bottom)
+            make.trailing.equalTo(self.view).offset(-78)
+        }
+        
         startButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
             make.bottom.equalToSuperview().multipliedBy(0.835)
@@ -127,6 +154,8 @@ class HomeViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.89)
             make.height.equalTo(continueButton.snp.width).multipliedBy(0.16)
         }
+        
+        
     }
     func getGradientLayer(bounds : CGRect) -> CAGradientLayer{
         // 다른 Gradient를 사용하려면 아래의 Colors를 바꾸면 됩니다~

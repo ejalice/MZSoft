@@ -154,7 +154,9 @@ class PrologViewController: UIViewController {
         }
         startButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(contentLabel.snp.bottom).multipliedBy(1.12)
+//            make.top.equalTo(contentLabel.snp.bottom).multipliedBy(1.12)
+            make.bottom.equalToSuperview().multipliedBy(0.94)
+
             make.width.equalToSuperview().multipliedBy(0.8) // 350/390
             make.height.equalTo(startButton.snp.width).multipliedBy(0.16) // 350/56
         }
