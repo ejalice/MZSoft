@@ -9,6 +9,7 @@ import SnapKit
 import UIKit
 
 class FullMessageViewController: UIViewController {
+    var selectedDate: String = ""
     let device = UIScreen.getDevice()
     var messageData: [Message] = [Message(type: .male, content: "혹시 집이 없으신가요?"), Message(type: .female, content: "ㅋ̄̈ ㅋ꙼̈ｦｦㅋ̤̫ㅋ̤̮ 웅"), Message(type: .male, content: "언제 시간 돼??"), Message(type: .female, content: "사흘 후에 어때?"), Message(type: .female, content: "캘박 필수~~")]
     var dayData: [Day] = [Day(day: "일", date: "2", isToday: false), Day(day: "월", date: "3", isToday: true), Day(day: "화", date: "4", isToday: false), Day(day: "수", date: "5", isToday: false), Day(day: "목", date: "6", isToday: false), Day(day: "금", date: "7", isToday: false), Day(day: "토", date: "8", isToday: false)]
@@ -185,7 +186,17 @@ class FullMessageViewController: UIViewController {
     }
     
     @objc private func onTapSendButton() {
-        
+        let vc = ResultsViewController()
+        if selectedDate == "6" {
+            print("성공")
+            vc.storyContent = Story.story[1]
+            vc.modalPresentationStyle = .fullScreen
+        } else {
+            print("실패")
+            vc.storyContent = Story.story[4]
+            vc.modalPresentationStyle = .fullScreen
+        }
+        self.present(vc, animated: false)
     }
     
     private func configureUI() {
@@ -321,6 +332,13 @@ extension FullMessageViewController: UICollectionViewDataSource, UICollectionVie
         case false:
             guard let cell = calendarCollectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCollectionViewCell", for: indexPath) as? CalendarCollectionViewCell else { return UICollectionViewCell() }
             DispatchQueue.main.async {
+                cell.completion = { date in
+                    self.selectedDate = date
+                    self.calendarCollectionView.visibleCells.forEach{
+                        let a = $0 as! CalendarCollectionViewCell
+                        a.buttonTintColorToggle()
+                    }
+                }
                 cell.configureUI(dayModel: self.dayData[indexPath.row])
             }
             return cell
@@ -360,6 +378,7 @@ extension FullMessageViewController: UICollectionViewDataSource, UICollectionVie
 
 class CalendarCollectionViewCell: UICollectionViewCell {
     var dayModel: Day!
+    var completion: ((_ date: String) -> Void)!
     
     private lazy var dotLabel: UILabel = {
         let label = UILabel()
@@ -396,6 +415,12 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    func buttonTintColorToggle() {
+        if dayModel.date == "6" || dayModel.date == "7" {
+            self.dateButton.backgroundColor = .appBackgroundColor2
+        }
     }
     
     func configureUI(dayModel: Day) {
@@ -437,14 +462,9 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func onTapDateButton() {
-        self.dateButton.backgroundColor = .appTintColor1
-        if dayModel.date == "6" {
-            print("성공")
-            let vc = HalfMessageViewController()
-            self.inputViewController?.present(vc, animated: false)
-            
-        } else {
-            print("실패")
+        DispatchQueue.main.async {
+            self.completion(self.dayModel.date)
+            self.dateButton.backgroundColor = .appTintColor1
         }
     }
 }
