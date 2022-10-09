@@ -100,6 +100,7 @@ class PrologViewController: UIViewController {
         contentLabel.text = story.content
         contentLabel.textColor = .black
         startButton.setTitle(story.buttonContent, for: .normal)
+        startButton.titleLabel?.font = .appDefaultFont(size: 17)
         if stageNum == 1 {
             let attributedString1: NSMutableAttributedString = NSMutableAttributedString(string: "썸을 탄 지 2주..\n이제는")
             let attributedString2: NSMutableAttributedString = NSMutableAttributedString(string: " 때")
@@ -154,7 +155,7 @@ class PrologViewController: UIViewController {
         }
         startButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(contentLabel.snp.bottom).multipliedBy(1.12)
+            make.bottom.equalToSuperview().multipliedBy(0.94)
             make.width.equalToSuperview().multipliedBy(0.8) // 350/390
             make.height.equalTo(startButton.snp.width).multipliedBy(0.16) // 350/56
         }
