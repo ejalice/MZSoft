@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "gifu",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kaishin/Gifu.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "467eee59d1952574d1eeb5e4740a4c3123cf649b"
+      }
+    },
+    {
       "identity" : "lottie-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-ios",

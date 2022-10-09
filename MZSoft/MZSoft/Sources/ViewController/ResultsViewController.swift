@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Lottie
+import Gifu
 
 class ResultsViewController: UIViewController {
     let device = UIScreen.getDevice()
@@ -21,7 +22,7 @@ class ResultsViewController: UIViewController {
         return label
     }()
     
-    private let imageView: UIImageView = {
+    private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -82,8 +83,6 @@ class ResultsViewController: UIViewController {
         configureLabel(story: storyContent)
         setConstraints(story: storyContent)
         buttonConfigure(story: storyContent)
-        
-
     }
     
     private func buttonConfigure(story: Story) {
@@ -107,23 +106,25 @@ class ResultsViewController: UIViewController {
     }
     
     @objc func moveToNext() {
-        let stageNum = UserDefaults.standard.integer(forKey: "stage")
+        var stageNum = UserDefaults.standard.integer(forKey: "stage")
         var vc: UIViewController!
         if stageNum == 0 {
             vc = PrologViewController()
             let vc2 = vc as! PrologViewController
             UserDefaults.standard.set(1, forKey: "stage")
+            stageNum = UserDefaults.standard.integer(forKey: "stage")
             vc2.stageNum = stageNum
             vc = vc2
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         } else {
             vc = ResultsViewController()
             let vc2 = vc as! ResultsViewController
             vc2.storyContent = Story.story[6]
             vc = vc2
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: false)
         }
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
-        
     }
     
     @objc func moveToHome(){
@@ -135,14 +136,10 @@ class ResultsViewController: UIViewController {
     }
     
     private func configure(story: Story) {
-        if story.imageName == "lottie" {
-            let animationView = AnimationView()
-            animationView.frame = imageView.bounds
-            animationView.animation = Animation.named("ending")
-            animationView.contentMode = .scaleAspectFit
-            animationView.loopMode = .playOnce
-            animationView.play()
-            imageView.addSubview(animationView)
+        if story.imageName == "ending" {
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(named: story.imageName)
+            }
         } else {
             imageView.image = UIImage(named: story.imageName)
         }

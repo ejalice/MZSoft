@@ -56,7 +56,7 @@ class HalfMessageViewController: UIViewController {
     private lazy var messageFooterView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
-        view.layer.borderWidth = 1
+        view.layer.borderWidth = 2
         view.layer.borderColor = UIColor.appBorderColor1.cgColor
         
         return view

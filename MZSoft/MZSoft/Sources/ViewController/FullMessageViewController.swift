@@ -11,7 +11,7 @@ import UIKit
 class FullMessageViewController: UIViewController {
     var selectedDate: String = ""
     let device = UIScreen.getDevice()
-    var messageData: [Message] = [Message(type: .male, content: "혹시 집이 없으신가요?"), Message(type: .female, content: "ㅋ̄̈ ㅋ꙼̈ｦｦㅋ̤̫ㅋ̤̮ 웅"), Message(type: .male, content: "언제 시간 돼??"), Message(type: .female, content: "사흘 후에 어때?"), Message(type: .female, content: "캘박 필수~~")]
+    var messageData: [Message] = [Message(type: .male, content: "혹시 집이 없으신가요?"), Message(type: .female, content: "ㅋㅋㅋㅋㅋㅋ 웅"), Message(type: .male, content: "언제 시간 돼??"), Message(type: .female, content: "사흘 후에 어때?"), Message(type: .female, content: "캘박 필수~~")]
     var dayData: [Day] = [Day(day: "일", date: "2", isToday: false), Day(day: "월", date: "3", isToday: true), Day(day: "화", date: "4", isToday: false), Day(day: "수", date: "5", isToday: false), Day(day: "목", date: "6", isToday: false), Day(day: "금", date: "7", isToday: false), Day(day: "토", date: "8", isToday: false)]
     private lazy var borderView: UIView = {
         let view = UIView()
@@ -90,7 +90,7 @@ class FullMessageViewController: UIViewController {
     private lazy var messageFooterView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
-        view.layer.borderWidth = 1
+        view.layer.borderWidth = 2
         view.layer.borderColor = UIColor.appBorderColor1.cgColor
         
         return view
