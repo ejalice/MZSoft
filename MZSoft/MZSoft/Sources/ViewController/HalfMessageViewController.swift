@@ -193,11 +193,16 @@ class HalfMessageViewController: UIViewController {
     }
     
     @objc private func onTapSendButton() {
+        let vc = ResultsViewController()
         if selectedButtonNumber == 1 {
-            print("정답!!")
+            vc.storyContent = Story.story[0]
+        } else if selectedButtonNumber == 2 || selectedButtonNumber == 3 {
+            vc.storyContent = Story.story[2]
         } else {
-            print("땡!!")
+            vc.storyContent = Story.story[3]
         }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
     }
     
     @objc private func onTapSelectButton1() {

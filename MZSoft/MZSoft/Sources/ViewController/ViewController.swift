@@ -23,6 +23,13 @@ class ViewController: UIViewController {
         configureContraints()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let vc = HalfMessageViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
+    }
+    
     private func configureContraints() {
         label.snp.makeConstraints { make in
             make.edges.equalToSuperview()

@@ -10,8 +10,10 @@ import Foundation
 struct Story {
     static let story =  [
         Story(type: .success, mainTitle: "성공", subTitle: "", imageName: "aliceProfile", content: "썸녀가 호감을 보입니다", buttonContent: "다음"),
+        Story(type: .success, mainTitle: "성공", subTitle: "", imageName: "aliceProfile", content: "여자친구 GET~! >.<\n드디어 여자친구가 생겼다능~!", buttonContent: "다음"),
         Story(type: .failOne, mainTitle: "GAME OVER", subTitle: "<응애>", imageName: "aliceProfile", content: "썸녀를 엄마로\n만들어 버렸습니다.", buttonContent: "홈으로"),
-        Story(type: .failTwo, mainTitle: "GAME OVER", subTitle: "<어떻게>", imageName: "aliceProfile", content: "니 맞춤법이 더 어.떻.게 ^^", buttonContent: "홈으로")
+        Story(type: .failTwo, mainTitle: "GAME OVER", subTitle: "<어떻게>", imageName: "aliceProfile", content: "니 맞춤법이 더 어.떻.게 ^^", buttonContent: "홈으로"),
+        Story(type: .failTwo, mainTitle: "GAME OVER", subTitle: "<이루어질 수 없는 사랑>", imageName: "aliceProfile", content: "너 어디야?..\n오늘 만나기로 했잖아", buttonContent: "홈으로")
     ]
     
     let type: ViewType
