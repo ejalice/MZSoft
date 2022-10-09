@@ -85,8 +85,10 @@ class HomeViewController: UIViewController {
         contentLabel.textColor = gradientColor(bounds: contentLabel.bounds, gradientLayer: gradient)
     }
         @objc func pushNavigation() {
-//            let vc = PrologViewController(storyContent: storyContent)
-//            self.navigationController?.pushViewController(vc, animated: true)
+            let vc = PrologViewController()
+            vc.stageNum = stageNum
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         }
     
     // Constraints
