@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
         
         configure(story: storyContent)
         setConstraints(story: storyContent)
-        startButton.addTarget(self, action: #selector(pushNavigation), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(moveNext), for: .touchUpInside)
     }
     
     private func configure(story: Story) {
@@ -84,12 +84,12 @@ class HomeViewController: UIViewController {
         let gradient = getGradientLayer(bounds: contentLabel.bounds)
         contentLabel.textColor = gradientColor(bounds: contentLabel.bounds, gradientLayer: gradient)
     }
-        @objc func pushNavigation() {
-            let vc = PrologViewController()
-            vc.stageNum = stageNum
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
-        }
+    @objc func moveNext() {
+        let vc = PrologViewController()
+        vc.stageNum = stageNum
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
     
     // Constraints
     private func setConstraints(story: Story) {
