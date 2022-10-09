@@ -126,9 +126,6 @@ class ResultsViewController: UIViewController {
         switch story.type {
 
         case .failTwo:
-            self.imageView.layer.borderWidth = 2
-            self.imageView.layer.borderColor = UIColor.white.cgColor
-            
             self.contentLabel.textColor = .appTextColor2
             image = UIImage(named: "messageLeft")
             image.resizableImage(withCapInsets: device.messageEdgeInset, resizingMode: .stretch)
@@ -141,8 +138,6 @@ class ResultsViewController: UIViewController {
                 make.height.equalTo(contentLabel.intrinsicContentSize.height + 51)
             }
             contentLabel.snp.makeConstraints { make in
-//                make.centerX.equalTo(backgroundImageView.snp.centerX)
-//                make.top.equalTo(backgroundImageView.snp.top).offset(19)
                 make.centerX.equalTo(self.view)
                 make.top.equalTo(imageView.snp.bottom).multipliedBy(1.063)
 
@@ -169,9 +164,18 @@ class ResultsViewController: UIViewController {
         
         imageView.snp.makeConstraints { make in
             make.centerX.equalTo(self.view)
-            make.top.equalTo(subTitleLabel.snp.bottom).multipliedBy(1.53)
+            make.top.equalTo(subTitleLabel.snp.bottom).multipliedBy(1.28)
             make.width.equalToSuperview().multipliedBy(0.72) // 282/390
             make.height.equalTo(imageView.snp.width)
+            
+            switch story.type {
+            case .success:
+                imageView.layer.borderColor = UIColor.white.cgColor
+                imageView.layer.borderWidth = 2
+                imageView.layer.cornerRadius = 8
+            default:
+                print("")
+            }
         }
         
         contentLabel.snp.makeConstraints { make in
@@ -182,7 +186,6 @@ class ResultsViewController: UIViewController {
             default:
                 make.top.equalTo(imageView.snp.bottom).multipliedBy(1.063)
             }
-            
         }
         
         button.snp.makeConstraints { make in
