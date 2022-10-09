@@ -397,6 +397,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
     
     private let label: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = .appDefaultFont(size: 15)
         return label
     }()
