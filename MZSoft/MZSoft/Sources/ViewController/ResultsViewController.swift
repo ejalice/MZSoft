@@ -77,11 +77,10 @@ class ResultsViewController: UIViewController {
          backgroundImageView, contentLabel,
          button].forEach { self.view.addSubview($0) }
         
-        configure(story: Story.story[1])
-        configure(story: Story.story[1])
-        configureLabel(story: Story.story[1])
-        setConstraints(story: Story.story[1])
-        buttonConfigure(story: Story.story[1])
+        configure(story: storyContent)
+        configureLabel(story: storyContent)
+        setConstraints(story: storyContent)
+        buttonConfigure(story: storyContent)
         
 
     }
