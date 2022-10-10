@@ -7,8 +7,6 @@
 
 import UIKit
 import SnapKit
-import Lottie
-import Gifu
 
 class ResultsViewController: UIViewController {
     let device = UIScreen.getDevice()
