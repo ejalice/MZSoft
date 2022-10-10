@@ -193,7 +193,6 @@
 		0AE27F0128F0790400D79208 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0AE27F1828F2BDAF00D79208 /* Lottie */,
 				0AE27F0E28F1D7C800D79208 /* Font */,
 				0A96FB9728F045100082F4C9 /* Assets.xcassets */,
 				0A96FB8E28F0450E0082F4C9 /* AppDelegate.swift */,
@@ -225,13 +224,6 @@
 				0AE27F0F28F1D7D200D79208 /* neodgm.ttf */,
 			);
 			path = Font;
-			sourceTree = "<group>";
-		};
-		0AE27F1828F2BDAF00D79208 /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Lottie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
