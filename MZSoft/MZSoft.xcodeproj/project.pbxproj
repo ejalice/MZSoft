@@ -560,6 +560,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = H278GZ4GQ7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MZSoft/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "MORE상식";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -595,6 +596,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = H278GZ4GQ7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MZSoft/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "MORE상식";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
